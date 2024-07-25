@@ -1,6 +1,6 @@
 import pygame
 import sys
-import knowledge_game_module
+import knowledge_game2_module
 
 pygame.init()
 
@@ -31,13 +31,13 @@ grid_score_table = [
 ]
 
 # Read and store questions from .csv
-get_question_bank = knowledge_game_module.read_csv("math_question_bank.csv")
+get_question_bank = knowledge_game2_module.read_csv("math_question_bank.csv")
 
 # Assign random questions to cells
-get_question_cell = knowledge_game_module.assign_random_question_to_cells(grid_table_size, grid_score_table, get_question_bank)
+get_question_cell = knowledge_game2_module.assign_random_question_to_cells(grid_table_size, grid_score_table, get_question_bank)
 
 # Get team names
-team_names = knowledge_game_module.get_team_names()
+team_names = knowledge_game2_module.get_team_names()
 
 # Initialize game state
 cell_selected = None
@@ -63,7 +63,7 @@ while running_main_screen:
             if cell_selected in get_question_cell and cell_selected not in cell_answered:
                 current_question = get_question_cell[cell_selected]
                 current_question_score = grid_score_table[mouse_row][mouse_col]
-                knowledge_game_module.show_question_screen(current_player, current_player_score, current_question, current_question_score, cell_selected, cell_answered, team_names)
+                knowledge_game2_module.show_question_screen(current_player, current_player_score, current_question, current_question_score, cell_selected, cell_answered, team_names)
                 
                 # Check if the cell was answered during the question screen
                 if cell_selected in cell_answered:
@@ -74,8 +74,8 @@ while running_main_screen:
                 current_player = 2 if current_player == 1 else 1
 
             # Check if one of the players reaches 15 points
-            if knowledge_game_module.check_win_condition(current_player_score):
-                knowledge_game_module.show_winning_screen(3 - current_player, current_player_score, team_names)
+            if knowledge_game2_module.check_win_condition(current_player_score):
+                knowledge_game2_module.show_winning_screen(3 - current_player, current_player_score, team_names)
 
     # Fill background of the main screen with WHITE
     main_screen.fill(WHITE)
