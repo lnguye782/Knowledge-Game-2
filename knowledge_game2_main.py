@@ -17,7 +17,7 @@ font = pygame.font.Font(None, 45)
 # Set up main game window
 window_size = (600, 600)
 main_screen = pygame.display.set_mode(window_size)
-pygame.display.set_caption("Knowledge Game")
+pygame.display.set_caption("Knowledge Game 2")
 
 # Define the grid table
 grid_table_size = 5
