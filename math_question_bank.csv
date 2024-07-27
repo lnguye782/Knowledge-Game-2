@@ -1,11 +1,33 @@
-score,question
-1,What is cos(pi)?
-1,"How far does Long travel, in miles, if he drives at 74 mph for 40 minutes?"
-1,What is the square root of 256?
-1,"Dad is 45 years old. After 15 more years, his son's age will be 1/3 of his age. What is the son's current age?"
-1,Solve the system of equations: 2x + 3y = 6 and 4x - y = 5
-1,"What do h, k, and r represent in the standard form of a circle's equation is: (x - h)^2 + (y - k)^2 = r^2."
-2,"Find the next number in the sequence: 5, 16, 49, 104, ?."
-2,How many digits are needed to number the pages of a book with 1234 pages?
-5,Arrange the numbers and mathematcial symbols accordingly to get the calculation with a result of 2: 2 4 8 9 + - /
-5,There are 13 teams participating in a football tournament where each pair of teams plays two matches (a first leg and a second leg). How many matches are there in total in this tournament?
+score,question,answer
+1,What is cos(pi)?,-1
+1,"How far does Long travel, in miles, if he drives at 74 mph for 40 minutes?",49.33 miles
+1,What is the square root of 256?,16
+1,"Dad is 45 years old. After 15 more years, his son's age will be 1/3 of his age. What is the son's current age?",5 years old
+1,Solve the system of equations: 2x + 3y = 6 and 4x - y = 5,"x = 1.5, y = 1"
+1,1 inch = 2.54 ...,Centimeter
+1,"Find the shape with a different number of sides: Square, Rectangle, Hexagon, Rhombus",Hexagon
+1,What is the value of the Roman numeral MMXVII in decimal?,2017
+1,"Hy wrote on the board a three-digit square number not greater than 200. Hy realized that if one of the rightmost digits is erased from this number, the result is also a square number. Find the number that Hy wrote.",169
+1,"On the clock face, every 10 seconds, the second hand rotates by how many degrees?",60 degrees
+1,What is the largest prime number less than 90?,89
+1,,
+1,,
+1,,
+1,,
+1,"What do h, k, and r represent in the standard form of a circle's equation is: (x - h)^2 + (y - k)^2 = r^2.",Center of Circle
+2,"Find the next number in the sequence: 5, 16, 49, 104, ?.",181
+2,How many digits are needed to number the pages of a book with 1234 pages?,3829 digits
+2,How many weeks are there in 10! seconds?,6 weeks
+2,"Find two natural numbers, knowing that the sum of these two numbers is 18 and when we invert the two numbers and add them together, we get the result 1/4.",6 and 12
+2,,
+2,,
+2,,
+2,,
+2,,
+2,,
+2,,
+2,,
+2,,
+5,Arrange the numbers and mathematcial symbols accordingly to get the calculation with a result of 2: 2 4 8 9 + - /, 9 - 28/4
+5,Given four distinct positive integers such that the sum of every two numbers is divisible by 2 and the sum of every three numbers is divisible by 3. Find the smallest value of the sum of these four numbers?,40
+5,"A factory produces 100 products per day in the first 5 days of September. The total number of products produced in the following 10 days is 500 products less than in the last 15 days of the month. Know that in September, the factory produced 4800 products. On average, how many products does the above factory produce each day during the last 15 days of the month?",160 products

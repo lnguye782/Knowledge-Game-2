@@ -15,15 +15,15 @@ def get_team_names():
     font = pygame.font.Font(None, 45)
 
     # Set up team name input screen window
-    window_size = (600, 600)
+    window_size = (600, 720)
     team_name_screen = pygame.display.set_mode(window_size)  
 
     # Initialize name state
     running_name_screen = True
     team_names = {1: "", 2: ""}
     current_player = 1
-    text = ''
-    input_box = pygame.Rect(200, 250, 400, 50)
+    temp_text = ''
+    input_box = pygame.Rect(200, 300, 400, 50)
     active = False
     color_active = pygame.Color('dodgerblue2')
     color_inactive = pygame.Color('lightskyblue3')
@@ -45,29 +45,23 @@ def get_team_names():
             elif event.type == pygame.KEYDOWN:
                 if active:
                     if event.key == pygame.K_RETURN:
-                        team_names[current_player] = text
-                        text = ''
+                        team_names[current_player] = temp_text
+                        temp_text = ''
                         current_player += 1
                         if current_player > 2:
                             running_name_screen = False
                     elif event.key == pygame.K_BACKSPACE:
-                        text = text[:-1]
+                        temp_text = temp_text[:-1]
                     else:
-                        text += event.unicode
+                        temp_text += event.unicode
         
         # Fill background of the name screen with WHITE
         team_name_screen.fill(WHITE)
 
-        # Render for current text
-        txt_surface = font.render(text, True, color_current)
-
-        # Resize the box if the text is too long
-        width = max(200, txt_surface.get_width() + 10)
-        input_box.w = width
-
-        team_name_screen.blit(txt_surface, (input_box.x + 5, input_box.y + 5))
-
+        user_input_text = font.render(temp_text, True, color_current)
+        input_box.w = max(200, user_input_text.get_width() + 10) # Resize the box if the text is too long
         pygame.draw.rect(team_name_screen, color_current, input_box, 2)
+        team_name_screen.blit(user_input_text, (input_box.x + 5, input_box.y + 10))
 
         instruction_text = font.render("Enter Team {} Name:".format(current_player), True, BLACK)
         instruction_text_rect = instruction_text.get_rect(center=(window_size[0] // 2, window_size[1] // 2 - 100))
@@ -91,42 +85,46 @@ def read_csv(file_name):
         for row in csv_reader:
             question_score_value = int(row[0])
             question_to_read = row[1]
-            question_dict[question_score_value].append(question_to_read)
+            answer_to_read = row[2]
+            question_dict[question_score_value].append((question_to_read, answer_to_read))
 
     return question_dict
 
 def assign_random_question_to_cells(grid_size, grid_table, question_bank):  
     # Initialize dictionary
     question_cell = {}
+    answer_cell = {}
     for row in range(grid_size):
         for col in range(grid_size):
             # Read the score value of the current cell
             read_score = grid_table[row][col]
-            # Store questions, from question bank based on read_score, as a list
+            # Store questions and answers, from question bank based on read_score, as a list
             available_questions = [q for q in question_bank[read_score] if q not in question_cell.values()]
             # Assign one random question to the current cell
             if available_questions:
-                question_cell[(row, col)] = random.choice(available_questions)
-            else:
-                question_cell[(row, col)] = "No More Questions from Bank"
+                selected_questions = random.choice(available_questions)
+                question_cell[(row, col)] = selected_questions[0]
+                answer_cell[(row, col)] = selected_questions[1]
 
-    return question_cell
+    return question_cell, answer_cell
 
-def show_question_screen(current_player, current_player_score, current_question, current_question_score, cell_selected, cell_answered, team_names):
+def show_question_screen(current_player, current_player_score, current_question, current_answer, current_question_score, cell_selected, cell_answered):
     # Define font for rendering text
     font = pygame.font.Font(None, 36)
 
     # Set up question screen window
-    window_size = (600, 600)
+    window_size = (600, 720)
     question_screen = pygame.display.set_mode(window_size)
     
     # Initialize game state
     running_question_screen = True
     timer_start = pygame.time.get_ticks()
 
-    # Question with 5-point gets 60 seconds, the rest gets 30 seconds
+    # Question with 5-point gets 60 seconds, 2-point gets 45 seconds, 1-point gets 30 seconds
     if current_question_score == 5:
         timer_limit = 60000 + 1000 # 60 seconds timer
+    elif current_question_score == 2:
+        timer_limit = 45000 + 1000 # 45 seconds timer
     else:
         timer_limit = 30000 + 1000 # 30 seconds timer
 
@@ -140,6 +138,12 @@ def show_question_screen(current_player, current_player_score, current_question,
                 if rect_correct_button.collidepoint(mouse_x, mouse_y):
                     current_player_score[current_player] += current_question_score
                     cell_answered[cell_selected] = True
+                    # Show the answer for 2 seconds then close question screen
+                    reveal_answer_text = font.render(current_answer, True, BLACK)
+                    reveal_answer_text_rect = reveal_answer_text.get_rect(center=(window_size[0] // 2, window_size[1] - 250))
+                    question_screen.blit(reveal_answer_text, reveal_answer_text_rect)
+                    pygame.display.flip()
+                    pygame.time.wait(2000)
                     running_question_screen = False
                 elif rect_incorrect_button.collidepoint(mouse_x, mouse_y):
                     running_question_screen = False
@@ -148,7 +152,7 @@ def show_question_screen(current_player, current_player_score, current_question,
         question_screen.fill(WHITE)
 
         # Wrap the question to fit question screen
-        rect_question = pygame.Rect(100, 250, window_size[0] - 100, window_size[1] // 2)
+        rect_question = pygame.Rect(100, 200, window_size[0] - 100, window_size[1] // 2)
         # Split text into lines and words
         words = [word.split(' ') for word in current_question.splitlines()]
         # Calculate the width and height of a space character
@@ -189,12 +193,12 @@ def show_question_screen(current_player, current_player_score, current_question,
         # Show the timer
         time_elapsed = pygame.time.get_ticks() - timer_start
         text_timer = font.render("{}".format(max(0, (timer_limit - time_elapsed) // 1000)), True, RED)
-        rect_timer = text_timer.get_rect(center=(window_size[0] - 30, window_size[1] - 580))
+        rect_timer = text_timer.get_rect(center=(window_size[0] - 30, window_size[1] - 700))
         question_screen.blit(text_timer, rect_timer)
 
         # Show correct and incorrect buttons
-        rect_correct_button = pygame.Rect((window_size[0] // 4) - 75, (window_size[1] // 2) + 150, 150, 50)
-        rect_incorrect_button = pygame.Rect((3 * window_size[0] // 4) - 75, (window_size [1] // 2) + 150, 150, 50)
+        rect_correct_button = pygame.Rect((window_size[0] // 4) - 75, (window_size[1] // 2) + 250, 150, 50)
+        rect_incorrect_button = pygame.Rect((3 * window_size[0] // 4) - 75, (window_size [1] // 2) + 250, 150, 50)
         pygame.draw.rect(question_screen, GREEN, rect_correct_button)
         pygame.draw.rect(question_screen, RED, rect_incorrect_button)
         text_correct = font.render("Correct", True, BLACK)
@@ -203,19 +207,6 @@ def show_question_screen(current_player, current_player_score, current_question,
         text_incorrect_rect = text_incorrect.get_rect(center=(rect_incorrect_button.center))
         question_screen.blit(text_correct, text_correct_rect)
         question_screen.blit(text_incorrect, text_incorrect_rect)
-
-        # Show both player scores
-        text_player1_score = font.render("{}: {} points".format(team_names[1], current_player_score[1]), True, RED)
-        text_player2_score = font.render("{}: {} points".format(team_names[2], current_player_score[2]), True, BLUE)
-        text_player1_score_rect = text_player1_score.get_rect(center=(window_size[0] - 490, window_size[1] - 570))
-        text_player2_score_rect = text_player2_score.get_rect(center=(window_size[0] - 490, window_size[1] - 540))
-        question_screen.blit(text_player1_score, text_player1_score_rect)
-        question_screen.blit(text_player2_score, text_player2_score_rect)
-
-        # Show player turn
-        text_player_turn = font.render("{}'s Turn".format(team_names[current_player]), True, BLACK)
-        text_player_turn_rect = text_player_turn.get_rect(center=(window_size[0] - 300, window_size[1] - 20))
-        question_screen.blit(text_player_turn, text_player_turn_rect)
 
         # Update display
         pygame.display.flip()
@@ -231,7 +222,7 @@ def show_winning_screen(current_player, current_player_score, team_names):
     font = pygame.font.Font(None, 50)
 
     # Set up question screen window
-    window_size = (600, 600)
+    window_size = (600, 720)
     winning_screen = pygame.display.set_mode(window_size)
 
     running_winning_screen = True
