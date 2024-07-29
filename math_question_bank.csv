@@ -14,10 +14,10 @@ score,question,answer
 1,,
 1,,
 1,,
-1,"What do h, k, and r represent in the standard form of a circle's equation is: (x - h)^2 + (y - k)^2 = r^2.",Center of Circle
+1,"What do h, k, and r represent in the standard form of a circle's equation is: (x - h)^2 + (y - k)^2 = r^2.","(h, k) coordinates of center of circle; r is radius of circle"
 2,"Find the next number in the sequence: 5, 16, 49, 104, ?.",181
 2,How many digits are needed to number the pages of a book with 1234 pages?,3829 digits
-2,How many weeks are there in 10! seconds?,6 weeks
+2,How many weeks are there in 10! sec?,6 weeks
 2,"Find two natural numbers, knowing that the sum of these two numbers is 18 and when we invert the two numbers and add them together, we get the result 1/4.",6 and 12
 2,,
 2,,
@@ -30,4 +30,4 @@ score,question,answer
 2,,
 5,Arrange the numbers and mathematcial symbols accordingly to get the calculation with a result of 2: 2 4 8 9 + - /, 9 - 28/4
 5,Given four distinct positive integers such that the sum of every two numbers is divisible by 2 and the sum of every three numbers is divisible by 3. Find the smallest value of the sum of these four numbers?,40
-5,"A factory produces 100 products per day in the first 5 days of September. The total number of products produced in the following 10 days is 500 products less than in the last 15 days of the month. Know that in September, the factory produced 4800 products. On average, how many products does the above factory produce each day during the last 15 days of the month?",160 products
+5,"A factory produces 100 products/day in the first 5 days of September. The total number of products produced in the following 10 days is 500 products less than in the last 15 days of the month. Known that in September, the factory produced 4800 products. On average, how many products does the above factory produce each day during the last 15 days of the month?",160 products

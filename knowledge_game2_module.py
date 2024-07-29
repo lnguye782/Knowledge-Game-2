@@ -94,6 +94,7 @@ def assign_random_question_to_cells(grid_size, grid_table, question_bank):
     # Initialize dictionary
     question_cell = {}
     answer_cell = {}
+
     for row in range(grid_size):
         for col in range(grid_size):
             # Read the score value of the current cell
@@ -102,15 +103,17 @@ def assign_random_question_to_cells(grid_size, grid_table, question_bank):
             available_questions = [q for q in question_bank[read_score] if q not in question_cell.values()]
             # Assign one random question to the current cell
             if available_questions:
-                selected_questions = random.choice(available_questions)
-                question_cell[(row, col)] = selected_questions[0]
-                answer_cell[(row, col)] = selected_questions[1]
+                selected_question = random.choice(available_questions)
+                question_cell[(row, col)] = selected_question[0]
+                answer_cell[(row, col)] = selected_question[1]
+                # Remove the selected questions from question bank
+                question_bank[read_score].remove(selected_question)
 
     return question_cell, answer_cell
 
 def show_question_screen(current_player, current_player_score, current_question, current_answer, current_question_score, cell_selected, cell_answered):
     # Define font for rendering text
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font(None, 35)
 
     # Set up question screen window
     window_size = (600, 720)
@@ -120,9 +123,9 @@ def show_question_screen(current_player, current_player_score, current_question,
     running_question_screen = True
     timer_start = pygame.time.get_ticks()
 
-    # Question with 5-point gets 60 seconds, 2-point gets 45 seconds, 1-point gets 30 seconds
+    # Question with 5-point gets 90 seconds, 2-point gets 45 seconds, 1-point gets 30 seconds
     if current_question_score == 5:
-        timer_limit = 60000 + 1000 # 60 seconds timer
+        timer_limit = 90000 + 1000 # 90 seconds timer
     elif current_question_score == 2:
         timer_limit = 45000 + 1000 # 45 seconds timer
     else:
@@ -244,3 +247,10 @@ def show_winning_screen(current_player, current_player_score, team_names):
 
         # Update display
         pygame.display.flip()
+
+#def count():
+    #temp_player_count_1 = 0
+    #temp_player_count_2 = 0
+
+    #while :
+        

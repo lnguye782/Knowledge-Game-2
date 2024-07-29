@@ -1,6 +1,6 @@
 score,question,answer
 1,"The sour taste in lemons is mainly caused by which acid: sulfuric acid, citric acid, lactic acid?",Citric acid
-1,What do you call the daughter of your sibling?,Niece
+1, What is the name of the first mammal to be cloned?,Dolly The Sheep
 1,What do we call two people sing a song together?,Duet
 1,March 14th is the anniversary of which constant in mathematics?,Pi
 1,"Pythagoras's theorem, Stewart's theorem, Thales's theorem are famous theorems about which geometric form?",Triangle
@@ -30,5 +30,5 @@ score,question,answer
 2,What is the smallest unit of measurement for data capacity in a computer?,Bit / Binary Digit
 2,Yule log is a dessert associated with which cultural holiday of the year?,Christmas
 2,"In 1963, who delivered the famous ""I Have a Dream"" speech to fight for human freedom and equality?",Martin Luther King Jr.
-5,There are 13 teams participating in a football tournament where each pair of teams plays two matches (a first leg and a second leg). How many matches are there in total in this tournament?,156
-5,"In March 2021, Vietnamese scientists achieved a breakthrough in animal cloning by using an innovative somatic cell cloning method. Which animal species was successfully cloned?",(Pot-bellied) Pig
+5,There are 13 teams participating in a football tournament where each pair of teams plays two matches (a first leg and a second leg). How many matches are there in total in this tournament?,156 matches
+5,"In March 2021, in Vietnam, Vietnamese scientists achieved a breakthrough in animal cloning by using an innovative somatic cell cloning method. Which animal species was successfully cloned?",(Pot-bellied) Pig
