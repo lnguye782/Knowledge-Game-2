@@ -182,7 +182,7 @@ def show_question_screen(current_player, current_player_score, current_question,
                 # Draw the word on the surface at the current position
                 question_screen.blit(word_surface, (x, y))
                 # Check if the last character of the word is colon
-                if (word[-1] == ':'):
+                if word and (word[-1] == ':'):
                     # Move to the next 2 line
                     x = rect_question.left
                     y += 2 * line_height

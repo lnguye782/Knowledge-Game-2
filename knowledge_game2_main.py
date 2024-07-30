@@ -77,6 +77,7 @@ while running_main_screen:
             # Check if one of the players reaches 15 points
             if knowledge_game2_module.check_win_condition(current_player_score):
                 knowledge_game2_module.show_winning_screen(3 - current_player, current_player_score, team_names)
+                running_main_screen = False
 
     # Fill background of the main screen with WHITE
     main_screen.fill(WHITE)
