@@ -86,7 +86,7 @@ while running_main_screen:
     for row in range(grid_table_size):
         for col in range(grid_table_size):
             rect_cell = pygame.Rect((col * cell_size), (row * cell_size) + 120, cell_size, cell_size)
-            # Draw the rectangle cells with BLACK and border width of 2
+            # Draw the rectangle cells with BLACK and border width of 1
             pygame.draw.rect(main_screen, BLACK, rect_cell, 1)
             # Draw the border line on top
             pygame.draw.line(main_screen, BLACK, (0, 120), (window_size[0], 120), 2)
@@ -96,7 +96,7 @@ while running_main_screen:
             text_rect = text_score.get_rect(center=(col * cell_size + cell_size // 2, row * cell_size + cell_size // 2 + 120))
             main_screen.blit(text_score, text_rect)
 
-            # Draw Red box for Player 1 and Blue box for Player 2
+            # Draw Red box for Player 1 or Blue box for Player 2 after they answered
             if (row, col) in cell_answered:
                 # Update the rectangle cell
                 answered_rect_cell = pygame.Rect((col * cell_size) + 25, (row * cell_size) + 145, cell_size - 50, cell_size - 50)

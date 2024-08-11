@@ -106,7 +106,7 @@ def assign_random_question_to_cells(grid_size, grid_table, question_bank):
                 selected_question = random.choice(available_questions)
                 question_cell[(row, col)] = selected_question[0]
                 answer_cell[(row, col)] = selected_question[1]
-                # Remove the selected questions from question bank
+                # Remove the selected question from question bank
                 question_bank[read_score].remove(selected_question)
 
     return question_cell, answer_cell
@@ -246,11 +246,4 @@ def show_winning_screen(current_player, current_player_score, team_names):
         winning_screen.blit(text_winning, text_winning_rect)
 
         # Update display
-        pygame.display.flip()
-
-#def count():
-    #temp_player_count_1 = 0
-    #temp_player_count_2 = 0
-
-    #while :
-        
+        pygame.display.flip()     
