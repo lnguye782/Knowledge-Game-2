@@ -4,30 +4,23 @@ score,question,answer
 1,What is the square root of 256?,16
 1,"Dad is 45 years old. After 15 more years, his son's age will be 1/3 of his age. What is the son's current age?",5 years old
 1,Solve the system of equations: 2x + 3y = 6 and 4x - y = 5,"x = 1.5, y = 1"
-1,1 inch = 2.54 ...,Centimeter
+1,1 inch = ... centimeter?,2.54
 1,"Find the shape with a different number of sides: Square, Rectangle, Hexagon, Rhombus",Hexagon
 1,What is the value of the Roman numeral MMXVII in decimal?,2017
 1,"Hy wrote on the board a three-digit square number not greater than 200. Hy realized that if one of the rightmost digits is erased from this number, the result is also a square number. Find the number that Hy wrote.",169
 1,"On the clock face, every 10 seconds, the second hand rotates by how many degrees?",60 degrees
 1,What is the largest prime number less than 90?,89
-1,,
-1,,
-1,,
-1,,
+1,"Long has a birthday every year. If Long turns 22 years old this year, how many birthday does Long have?",Only 1 birthday
+1,"Parents have 6 sons, each son has 1 little sister. How many people are there in the family?","9 people: 1 dad, 1 mom, 6 sons, 1 daughter"
+1,What is the smallest odd prime number?,Three
+1,"Find the next number in the sequence: 5, 16, 49, 104, ?.",181
 1,"What do h, k, and r represent in the standard form of a circle's equation is: (x - h)^2 + (y - k)^2 = r^2.","(h, k) coordinates of center of circle; r is radius of circle"
-2,"Find the next number in the sequence: 5, 16, 49, 104, ?.",181
 2,How many digits are needed to number the pages of a book with 1234 pages?,3829 digits
-2,How many weeks are there in 10! sec?,6 weeks
+2,How many weeks are there in 10! (10 factorial) sec?,6 weeks
 2,"Find two natural numbers, knowing that the sum of these two numbers is 18 and when we invert the two numbers and add them together, we get the result 1/4.",6 and 12
 2,"How many zeros are there between 1 and 1,000?",192 zeros
 2,Every 4 soft drink bottles can be exchanged for 1 new bottle. What is the total number of bottles can be exchanged for 32 soft drink bottles?,10 bottles
-2,,
-2,,
-2,,
-2,,
-2,,
-2,,
-2,,
+2,How do you distribute 15 candies into 5 identical boxes so that each box has candy and the number of candies in each box is different?,15 = 1 + 2 + 3 + 4 + 5
+2,"What is the largest number that can be created from 3 integers: 7, 0, 2",2^70
+2,"Known that 1/1/2019 is a Tuesday, what day is 1/1/2079? Hint: Every year on the same day, the day of the week increases by one, in a leap year it increases by two. So 1/1/2020 is a Wednesday, 2020 is a leap year so 1/1/2021 is a Friday.",1/1/2079 is a Sunday
 5,Arrange the numbers and mathematcial symbols accordingly to get the calculation with a result of 2: 2 4 8 9 + - /, 9 - 28/4
-5,Given four distinct positive integers such that the sum of every two numbers is divisible by 2 and the sum of every three numbers is divisible by 3. Find the smallest value of the sum of these four numbers?,40
-5,"A factory produces 100 products/day in the first 5 days of September. The total number of products produced in the following 10 days is 500 products less than in the last 15 days of the month. Known that in September, the factory produced 4800 products. On average, how many products does the above factory produce each day during the last 15 days of the month?",160 products

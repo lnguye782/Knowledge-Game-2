@@ -7,8 +7,9 @@ import random
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
-GREEN = (0, 255, 0)
+GREEN = (0, 240, 0)
 BLUE = (0, 0, 255)
+GOLD = (255, 215, 0)
 
 def get_team_names():
     # Define font for rendering text
@@ -113,7 +114,7 @@ def assign_random_question_to_cells(grid_size, grid_table, question_bank):
 
 def show_question_screen(current_player, current_player_score, current_question, current_answer, current_question_score, cell_selected, cell_answered):
     # Define font for rendering text
-    font = pygame.font.Font(None, 35)
+    font = pygame.font.Font(None, 36)
 
     # Set up question screen window
     window_size = (600, 720)

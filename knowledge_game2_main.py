@@ -8,8 +8,9 @@ pygame.init()
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
-GREEN = (0, 255, 0)
+GREEN = (0, 240, 0)
 BLUE = (0, 0, 255)
+GOLD = (255, 215, 0)
 
 # Define font for rendering text
 font = pygame.font.Font(None, 32)
@@ -96,7 +97,7 @@ while running_main_screen:
             text_rect = text_score.get_rect(center=(col * cell_size + cell_size // 2, row * cell_size + cell_size // 2 + 120))
             main_screen.blit(text_score, text_rect)
 
-            # Draw Red box for Player 1 or Blue box for Player 2 after they answered
+            # Draw Green box for Player 1 or Gold box for Player 2 after they answered
             if (row, col) in cell_answered:
                 # Update the rectangle cell
                 answered_rect_cell = pygame.Rect((col * cell_size) + 25, (row * cell_size) + 145, cell_size - 50, cell_size - 50)
@@ -105,15 +106,15 @@ while running_main_screen:
                 # Display the box in the cells
                 player_who_answered = cell_answered[(row, col)]
                 if player_who_answered == 1:
-                    pygame.draw.rect(main_screen, RED, answered_rect_cell)
+                    pygame.draw.rect(main_screen, GREEN, answered_rect_cell)
                     main_screen.blit(answered_text_score, text_rect)
                 elif player_who_answered == 2:
-                    pygame.draw.rect(main_screen, BLUE, answered_rect_cell)
+                    pygame.draw.rect(main_screen, GOLD, answered_rect_cell)
                     main_screen.blit(answered_text_score, text_rect)
 
     # Show both player scores
-    text_player1_score = font.render("{}: {} points".format(team_names[1], current_player_score[1]), True, RED)
-    text_player2_score = font.render("{}: {} points".format(team_names[2], current_player_score[2]), True, BLUE)
+    text_player1_score = font.render("{}: {} points".format(team_names[1], current_player_score[1]), True, GREEN)
+    text_player2_score = font.render("{}: {} points".format(team_names[2], current_player_score[2]), True, GOLD)
     text_player1_score_rect = text_player1_score.get_rect(topleft=(20, 30))
     text_player2_score_rect = text_player2_score.get_rect(topleft=(20, 60))
     main_screen.blit(text_player1_score, text_player1_score_rect)
